@@ -1,5 +1,3 @@
-require IEx
-
 defmodule XYComponent do
   use GenEvent
 
@@ -14,12 +12,11 @@ defmodule XYComponent do
     {:ok, position}
   end
 
-  def handle_call({:move, {:y, new_y}}, {x, _}) do
-    IO.puts "move y"
+  def handle_event({:move, {:y, new_y}}, {x, _}) do
     {:ok, {x, new_y}}
   end
 
-  def handle_call({:move, {:x, new_x}}, {_, y}) do
+  def handle_event({:move, {:x, new_x}}, {_, y}) do
     {:ok, {new_x, y}}
   end
 
